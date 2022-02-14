@@ -2,6 +2,7 @@ package com.renegade.leaderboard.leaderboardapi.user;
 
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,10 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.renegade.leaderboard.leaderboardapi.tasks.Task;
 
 @Entity
 @Table(name = "users")
@@ -48,9 +52,9 @@ public class User {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date updatedAt;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "user")
-//    private List<Task> tasks;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Task> tasks;
     
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -134,6 +138,14 @@ public class User {
 
 	public void setRoles(Set<Roles> roles) {
 		this.roles = roles;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 
 }

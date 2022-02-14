@@ -19,7 +19,7 @@ import com.renegade.leaderboard.leaderboardapi.user.User;
 @Entity
 @Table(name = "tasks")
 @JsonIgnoreProperties({"hibernateLadyIntializer", "hanlder"})
-public class Tasks implements Serializable {
+public class Task implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,7 +40,7 @@ public class Tasks implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Tasks() {
+    public Task() {
         //
     }
 
