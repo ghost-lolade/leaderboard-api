@@ -1,5 +1,6 @@
 package com.renegade.leaderboard.leaderboardapi.user;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.List;

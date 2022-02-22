@@ -46,4 +46,8 @@ public class LeaderboardService {
 		}
 		return leaderboard;
 	}
+	
+	public Leaderboard addScore(Leaderboard leaderboard) {
+		return leaderboardRepository.save(leaderboard);
+	}
 }
